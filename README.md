@@ -86,3 +86,10 @@ for f in new-folder/*/*/capa.json; do
   jq '."meta"."timestamp"' $f
 done
 ```
+
+Extending with New Modules
+==========================
+
+Adding new modules can be done via a GitHub PR. A great template is [GitHub PR #1](https://github.com/ckane/zooq/pull/1),
+where I added the `capa` analyzer. Make sure that `requirements.txt` is updated, as well as any data required at run-time
+that isn't installed via `pip` is installed as (preferrably) a `git submodule` in this repo.
