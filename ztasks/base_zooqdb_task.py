@@ -13,6 +13,7 @@ class base_zooqdb_task(ztask_base):
     def __init__(self, objid, dir):
         super(base_zooqdb_task, self).__init__(objid, dir)
         self.__sqlite3 = '{dir}/samples.sqlite'.format(dir=self.dirname())
+        self.__depends = []
 
     def get_mw_path(self):
         dbconn = sqlite3.connect(self.__sqlite3)
@@ -25,6 +26,9 @@ class base_zooqdb_task(ztask_base):
 
         # On error, return None
         return None
+
+    def get_depends(self):
+        return self.__depends
 
     def dowork(self):
         pass
