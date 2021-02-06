@@ -1,0 +1,1 @@
+-e git+https://github.com/fireeye/capa.git@05998b5d05a4c471159e78d03c6fd80e881d06cd#egg=flare-capa

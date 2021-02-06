@@ -61,9 +61,14 @@ dbconn.commit()
 cur.close()
 
 # Signature describing what actions (modules) to execute
-data = {'task_obj': malsha256, 'task_name': 'exifdata', 'pid': -1,
+data = [
+        {'task_obj': malsha256, 'task_name': 'exifdata', 'pid': -1,
+         'priority': 'low', 'dependson': []},
+        {'task_obj': malsha256, 'task_name': 'capa', 'pid': -1,
          'priority': 'low', 'dependson': []}
+         ]
 
 s = socket(AF_UNIX, SOCK_STREAM)
 s.connect('{dir}/zooq.sock'.format(dir=args.root))
-s.send(bytes(json.dumps(data) + '\n', 'utf-8'))
+for d in data:
+    s.send(bytes(json.dumps(d) + '\n', 'utf-8'))
